@@ -4,13 +4,22 @@ import { ChevronRight, Compass, Globe, Mail, MapPin, TreePalmIcon as Palm, Phone
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+} from "@/components/ui/sheet"
+
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
+      <header className="sticky   top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto px-4 flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Palm className="h-6 w-6 text-primary" />
             <span className="text-xl font-bold">Madagascar Voyages</span>
@@ -33,25 +42,56 @@ export default function Home() {
             </Link>
           </nav>
           <Button className="hidden md:flex">Réserver Maintenant</Button>
-          <Button variant="outline" size="icon" className="md:hidden">
-            <span className="sr-only">Toggle menu</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-          </Button>
+          {/* Mobile Menu Button */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="md:hidden">
+                <span className="sr-only">Toggle menu</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-6 w-6"
+                >
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent side="left" className="w-[250px]">
+              <SheetHeader>
+                <SheetTitle className="text-left text-lg font-bold">Menu</SheetTitle>
+              </SheetHeader>
+              <div className="mt-4 px-4 flex flex-col gap-4">
+                <SheetClose asChild>
+                  <Link href="/" className="text-sm font-medium hover:text-primary">Accueil</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="#destinations" className="text-sm font-medium hover:text-primary">Destinations</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="#services" className="text-sm font-medium hover:text-primary">Services</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="#about" className="text-sm font-medium hover:text-primary">À Propos</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="#contact" className="text-sm font-medium hover:text-primary">Contact</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Button className="mt-4 w-full">Réserver Maintenant</Button>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
